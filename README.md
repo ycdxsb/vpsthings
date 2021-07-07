@@ -112,3 +112,76 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/91yuntest
 ### 参考
 
 - https://vave.men/vpsjaoben.html
+
+
+
+## Buyvm
+
+- 存储块监控：https://buyvm.qixi.me/
+- 卢森堡机房抗投诉、无视DMCA版权，纽约、拉斯维加斯机房允许跑PT
+- 支付宝付款通过加拿大元 (2美元=> 2加拿大元=>10.38人民币) 结算
+- AMD Ryzen 3900X处理器，无限流量
+- 可挂载存储块，1.25美元/256GB
+
+### 中文乱码
+
+- `locale-gen zh_CN.UTF-8`
+- `/etc/default/locale`加入配置信息
+
+```
+LANG=zh_CN.UTF-8
+LC_CTYPE="zh_CN.UTF-8"
+LC_NUMERIC="zh_CN.UTF-8"
+LC_TIME="zh_CN.UTF-8"
+LC_COLLATE="zh_CN.UTF-8"
+LC_MONETARY="zh_CN.UTF-8"
+LC_MESSAGES="zh_CN.UTF-8"
+LC_PAPER="zh_CN.UTF-8"
+LC_NAME="zh_CN.UTF-8"
+LC_ADDRESS="zh_CN.UTF-8"
+LC_TELEPHONE="zh_CN.UTF-8"
+LC_MEASUREMENT="zh_CN.UTF-8"
+LC_IDENTIFICATION="zh_CN.UTF-8"
+LC_ALL=zh_CN.UTF-8
+```
+
+- `update-locale LANG=zh_CN.UTF-8`
+- `reboot`
+
+### 挂载存储块
+
+- 查看现有存储块
+
+```
+$ ls /dev/disk/by-id/
+ata-QEMU_DVD-ROM_QM00004  scsi-0BUYVM_SLAB_VOLUME-8601
+```
+
+- 格式化存储块
+
+```
+$ mkfs.ext4 -F /dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-8601
+```
+
+- 创建文件夹
+
+```
+mkdir /sdb
+```
+
+- 挂载盘
+
+```
+mount -o discard,defaults /dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-8601 /sdb
+```
+
+- 开机自动挂载
+
+```
+echo '/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-8601 /sdb ext4 defaults,nofail,discard 0 0' | sudo tee -a /etc/fstab
+```
+
+
+
+
+
