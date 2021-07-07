@@ -181,7 +181,25 @@ mount -o discard,defaults /dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-8601 /sdb
 echo '/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-8601 /sdb ext4 defaults,nofail,discard 0 0' | sudo tee -a /etc/fstab
 ```
 
+## 硬盘扩展和同步
+
+- rclone
+- rsync： http://www.ruanyifeng.com/blog/2020/08/rsync.html
 
 
 
+## 安全
+
+- fail2ban：https://www.cnblogs.com/Narule/p/13040065.html
+
+```
+apt-get install -y fail2ban
+systemctl start fail2ban
+systemctl status fail2ban
+systemctl enable fail2ban
+vim /etc/fail2ban/jail.local
+systemctl restart fail2ban
+systemctl status fail2ban
+fail2ban-client status sshd
+```
 
