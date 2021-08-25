@@ -113,7 +113,9 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/91yuntest
 
 - https://vave.men/vpsjaoben.html
 
-
+## 流媒体测试
+- `bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)`
+- `bash <(curl -sSL "https://github.com/CoiaPrant/MediaUnlock_Test/raw/main/check.sh")`
 
 ## Buyvm
 
